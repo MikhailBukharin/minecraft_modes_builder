@@ -50,7 +50,6 @@ python app/server.py --data-dir "../workshop-data"
 - [Объединение модов](docs/BUNDLES.md).
 - [Архитектура и API](docs/ARCHITECTURE.md).
 - [Разработка и проверки](docs/DEVELOPMENT.md).
-- [Результат подготовки к публикации](docs/PUBLICATION.md).
 
 ## Проверки
 

@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXCLUDED = r"(^|[\\/])(node_modules|\.venv|__pycache__|test-tmp|tmp|\.git)[\\/]"
+EXCLUDED = r"(^|[\\/])(node_modules|\.venv|__pycache__|\.ruff_cache|test-tmp|tmp|\.git)[\\/]"
 
 
 def main():
