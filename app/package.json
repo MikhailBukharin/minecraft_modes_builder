@@ -1,0 +1,17 @@
+{
+  "name": "minecraft-monster-workshop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node check.mjs",
+    "format:check": "prettier --check \"*.{js,mjs,json}\" \"web/**/*.{js,json,html,css}\" --ignore-path ../.prettierignore",
+    "format": "prettier --write \"*.{js,mjs,json}\" \"web/**/*.{js,json,html,css}\" --ignore-path ../.prettierignore"
+  },
+  "devDependencies": {
+    "prettier": "3.9.10"
+  }
+}

@@ -1,0 +1,36 @@
+# Private runtime content (stored outside the checkout by default)
+projects/
+exports/
+imports/
+bundles/
+generations/
+backups/
+output/
+research/
+server*.log
+*.log
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.pfx
+*.p12
+
+# Development tools and temporary files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+app/test-tmp/
+tmp/
+*.tmp
+.DS_Store
+Thumbs.db

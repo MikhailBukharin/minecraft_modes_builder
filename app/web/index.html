@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Мастерская монстров · Bedrock</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="canvas.css" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/">✦ Мастерская монстров <small>MINECRAFT BEDROCK</small></a>
+      <div>
+        <select id="projects" aria-label="Сохранённые проекты">
+          <option value="">Сохранённые проекты</option></select
+        ><button id="new">＋ Новый</button><button id="save">Сохранить</button>
+      </div>
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <span class="eyebrow">ОТ ИДЕИ ДО СВОЕГО МИРА</span>
+          <h1>Придумай. Собери. Оживи.</h1>
+          <p>Создай своего персонажа и забери дополнение для Bedrock.</p>
+        </div>
+        <span class="local">● Всё хранится на этом компьютере</span>
+      </section>
+      <div class="mode-nav" aria-label="Разделы мастерской">
+        <button data-mode="wizard" class="active">Пошаговый мастер</button
+        ><button data-mode="canvas">▦ Истории и диалоги</button
+        ><button data-mode="model">◇ Редактор модели</button>
+      </div>
+      <nav id="steps" aria-label="Этапы создания">
+        <button data-step="idea" class="active">01 Идея</button
+        ><button data-step="look">02 Внешность</button
+        ><button data-step="behavior">03 Поведение</button
+        ><button data-step="export">04 В Minecraft</button
+        ><button data-step="bundle">05 Общий мод</button>
+      </nav>
+      <section id="canvasMode" hidden><div id="flowEditor"></div></section>
+      <section id="modelMode" class="model-workspace" hidden>
+        <div id="modelEditor" class="editor"></div>
+        <div id="modelPreviewSlot"></div>
+      </section>
+      <section data-panel="bundle" id="bundlePanel" class="bundle-panel" hidden>
+        <div id="bundleEditor"></div>
+        <button id="bundleBack">← К индивидуальному моду</button>
+      </section>
+      <div class="workspace">
+        <section class="editor">
+          <div data-panel="idea">
+            <span class="eyebrow">ПАСПОРТ ПЕРСОНАЖА</span>
+            <h2>Кто твой монстр?</h2>
+            <label>Имя<input id="name" maxlength="80" /></label
+            ><label
+              >История и описание<textarea
+                id="description"
+                rows="4"
+                maxlength="2000"
+              ></textarea></label
+            ><label class="upload"
+              >＋ Добавить рисунок<input
+                type="file"
+                id="drawingFile"
+                accept="image/png,image/jpeg,image/webp" /></label
+            ><img id="drawingPreview" alt="Рисунок персонажа" hidden />
+            <p class="hint">
+              Рисунок сохраняется как референс. Форму модели можно настроить на следующем шаге или
+              импортировать из Blockbench.
+            </p>
+            <div class="pair">
+              <label>Пространство имён<input id="namespace" pattern="[a-z][a-z0-9_]+" /></label
+              ><label>ID монстра<input id="slug" pattern="[a-z][a-z0-9_]+" /></label>
+            </div>
+            <p class="hint">
+              Латинские буквы в нижнем регистре, цифры и _. Например: my_monsters:forest_eye.
+            </p>
+          </div>
+          <div data-panel="look" hidden>
+            <div id="generationPanel"></div>
+            <span class="eyebrow">ОБРАЗ И МОДЕЛЬ</span>
+            <h2>Собери внешность</h2>
+            <label
+              >Форма тела<select id="shape">
+                <option value="biped">На двух ногах</option>
+                <option value="quadruped">На четырёх лапах</option>
+              </select></label
+            >
+            <div class="pair">
+              <label>Цвет тела<input id="color" type="color" /></label
+              ><label>Лапы и рожки<input id="accent" type="color" /></label>
+            </div>
+            <p id="colorHint" class="hint"></p>
+            <div id="paletteEditor"></div>
+            <label class="check"><input id="horns" type="checkbox" /> Добавить рожки</label
+            ><label
+              >Масштаб <output id="scaleValue"></output
+              ><input id="scale" type="range" min="0.25" max="3" step="0.05"
+            /></label>
+            <div class="pair">
+              <label
+                >Ширина столкновений, блоки<input
+                  id="width"
+                  type="number"
+                  min="0.2"
+                  max="5"
+                  step="0.1" /></label
+              ><label
+                >Высота, блоки<input id="height" type="number" min="0.2" max="8" step="0.1"
+              /></label>
+            </div>
+            <label
+              >Прозрачность модели<select id="material">
+                <option value="entity_alphatest">Вырезание прозрачных пикселей</option>
+                <option value="entity_alphablend">Полупрозрачный материал</option>
+              </select></label
+            >
+            <details>
+              <summary>Своя модель из Blockbench</summary>
+              <p class="hint">
+                Экспорт Bedrock Geometry 1.12.0 и PNG с тем же размером, что указан в геометрии.
+                Анимацию leg_* можно включить в редакторе модели.
+              </p>
+              <label class="upload"
+                >Импортировать .geo.json<input id="geoFile" type="file" accept=".json" /></label
+              ><label class="upload"
+                >Импортировать текстуру PNG<input
+                  id="textureFile"
+                  type="file"
+                  accept="image/png" /></label
+              ><button id="resetModel">Вернуть встроенную модель</button>
+              <p id="importInfo" class="hint"></p>
+            </details>
+          </div>
+          <div data-panel="behavior" hidden>
+            <span class="eyebrow">ХАРАКТЕР И СПОСОБНОСТИ</span>
+            <h2>Как он себя ведёт?</h2>
+            <label
+              >Характер<select id="behavior">
+                <option value="peaceful">Мирный · гуляет и наблюдает</option>
+                <option value="neutral">Нейтральный · защищается при ударе</option>
+                <option value="hostile">Враждебный · атакует игрока</option>
+              </select></label
+            >
+            <div class="pair">
+              <label>Здоровье, HP<input id="health" type="number" min="1" max="1000" /></label
+              ><label
+                >Урон ближней атаки<input id="damage" type="number" min="0" max="100"
+              /></label>
+            </div>
+            <label>Скорость<input id="speed" type="number" min="0.01" max="1" step="0.01" /></label>
+            <details id="physicsDetails" open>
+              <summary>Физика и бой</summary>
+              <div class="pair">
+                <label
+                  >Устойчивость к отбрасыванию<input
+                    id="knockback"
+                    type="number"
+                    min="0"
+                    max="1"
+                    step="0.05" /></label
+                ><label
+                  >Обнаружение, блоки<input id="detection" type="number" min="1" max="128"
+                /></label>
+              </div>
+              <label
+                >Перезарядка атаки, с<input
+                  id="attack_cooldown"
+                  type="number"
+                  min="0.1"
+                  max="60"
+                  step="0.1" /></label
+              ><label class="check"
+                ><input id="fire_immune" type="checkbox" /> Иммунитет к огню</label
+              ><label class="check"><input id="can_jump" type="checkbox" /> Может прыгать</label
+              ><label class="check"><input id="gravity" type="checkbox" /> Гравитация</label
+              ><label class="check"><input id="pushable" type="checkbox" /> Можно толкать</label>
+            </details>
+            <label class="check"
+              ><input id="interactions" type="checkbox" /> Меню команд в игре</label
+            >
+            <p class="hint">
+              Истории и торговля также открывают меню взаимодействия. Диалоги создаются во вкладке
+              «Истории и диалоги».
+            </p>
+            <label
+              >Появление<select id="spawn">
+                <option value="manual">По яйцу призыва или команде</option>
+                <option value="natural">Также естественное появление</option>
+              </select></label
+            >
+            <div id="biomes" aria-label="Биомы появления"></div>
+            <details id="populationDetails">
+              <summary>Частота появления, площадь и лимиты</summary>
+              <div id="spawnEditor"></div>
+            </details>
+            <details id="rewardsDetails">
+              <summary>Взаимодействия: опыт, добыча и обмен</summary>
+              <div id="rewardsEditor"></div>
+            </details>
+            <p class="hint">
+              Сценарии и диалоги доступны на отдельной вкладке. Все параметры монстра находятся в
+              пошаговом мастере. Наземное движение и ближний бой экспортируются в Bedrock. Полёт и
+              огненные шары пока не добавлены.
+            </p>
+          </div>
+          <div data-panel="export" hidden>
+            <span class="eyebrow">ГОТОВО К ПРИКЛЮЧЕНИЮ</span>
+            <h2>Забери монстра в игру</h2>
+            <label>Минимальная версия движка<input id="engine" placeholder="1.26.60" /></label>
+            <p class="hint">
+              Для выпуска Bedrock 26.60 используется техническое обозначение 1.26.60. Проверь импорт
+              в своей установленной игре.
+            </p>
+            <button class="primary" id="export">↓ Собрать .mcaddon</button
+            ><a id="download" class="download" hidden>Скачать дополнение</a>
+            <ol>
+              <li>Открой скачанный .mcaddon с помощью Minecraft.</li>
+              <li>
+                В настройках тестового мира активируй пакет поведения и связанный пакет ресурсов.
+              </li>
+              <li>В творческом режиме найди яйцо призыва или разреши команды и выполни:</li>
+            </ol>
+            <code id="command"></code><button id="copy">Копировать команду</button>
+            <p class="hint">
+              Проверка архива не заменяет запуск в игре. Если монстр не появился, открой журнал
+              содержимого Minecraft и проверь ошибки пакета.
+            </p>
+          </div>
+          <div class="editor-footer">
+            <button id="prev">← Назад</button
+            ><button class="primary" id="next">Продолжить →</button>
+          </div>
+        </section>
+        <aside class="preview">
+          <div class="preview-head">
+            <div>
+              <span class="eyebrow">ТВОЙ ПЕРСОНАЖ</span>
+              <h2 id="previewName"></h2>
+            </div>
+            <span class="pill">3D</span>
+          </div>
+          <div
+            id="scene"
+            aria-label="Трёхмерный просмотр монстра и игрока для сравнения размеров"
+          ></div>
+          <div class="preview-scale">
+            <label class="check"
+              ><input id="showPlayer" type="checkbox" checked /> Игрок для масштаба</label
+            ><span>Рост фигуры — 1,8 блока</span>
+          </div>
+          <div class="preview-tools">
+            <button id="rotate">↻ Вращение</button><button id="walk">▷ Ходьба</button
+            ><button id="camera">Сбросить вид</button>
+          </div>
+          <p class="hint">
+            Перетаскивай, чтобы повернуть. Колёсико меняет масштаб. Размер игрока остаётся
+            постоянным при изменении монстра. В редакторе модели щёлкни по кубу для выбора.
+          </p>
+          <div id="stats"></div>
+        </aside>
+      </div>
+      <p id="status" role="status" aria-live="polite">Загрузка мастерской…</p>
+    </main>
+    <footer>Локальная мастерская · Проекты и дополнения хранятся отдельно от исходного кода</footer>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

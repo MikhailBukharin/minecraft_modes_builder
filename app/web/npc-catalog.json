@@ -1,0 +1,169 @@
+{
+  "rewards": [
+    { "key": "diamond", "label": "Алмаз", "item": "minecraft:diamond", "max_count": 64 },
+    { "key": "emerald", "label": "Изумруд", "item": "minecraft:emerald", "max_count": 64 },
+    {
+      "key": "netherite_scrap",
+      "label": "Незеритовый лом",
+      "item": "minecraft:netherite_scrap",
+      "max_count": 64
+    },
+    {
+      "key": "netherite_ingot",
+      "label": "Незеритовый слиток",
+      "item": "minecraft:netherite_ingot",
+      "max_count": 64
+    },
+    {
+      "key": "ancient_debris",
+      "label": "Древние обломки",
+      "item": "minecraft:ancient_debris",
+      "max_count": 64
+    },
+    {
+      "key": "amethyst_shard",
+      "label": "Осколок аметиста",
+      "item": "minecraft:amethyst_shard",
+      "max_count": 64
+    },
+    {
+      "key": "echo_shard",
+      "label": "Осколок эха",
+      "item": "minecraft:echo_shard",
+      "max_count": 64
+    },
+    {
+      "key": "lapis_lazuli",
+      "label": "Лазурит",
+      "item": "minecraft:lapis_lazuli",
+      "max_count": 64
+    },
+    { "key": "quartz", "label": "Кварц", "item": "minecraft:quartz", "max_count": 64 },
+    {
+      "key": "prismarine_crystals",
+      "label": "Кристаллы призмарина",
+      "item": "minecraft:prismarine_crystals",
+      "max_count": 64
+    },
+    {
+      "key": "crying_obsidian",
+      "label": "Плачущий обсидиан",
+      "item": "minecraft:crying_obsidian",
+      "max_count": 64
+    },
+    { "key": "end_stone", "label": "Камень Края", "item": "minecraft:end_stone", "max_count": 64 },
+    { "key": "calcite", "label": "Кальцит", "item": "minecraft:calcite", "max_count": 64 },
+    { "key": "book", "label": "Книга", "item": "minecraft:book", "max_count": 64 },
+    {
+      "key": "potion_healing",
+      "label": "Зелье лечения",
+      "item": "minecraft:potion",
+      "potion": "healing",
+      "max_count": 1,
+      "functions": [{ "function": "set_potion", "id": "healing" }]
+    },
+    {
+      "key": "potion_strong_healing",
+      "label": "Зелье лечения II",
+      "item": "minecraft:potion",
+      "potion": "strong_healing",
+      "max_count": 1,
+      "functions": [{ "function": "set_potion", "id": "strong_healing" }]
+    },
+    {
+      "key": "potion_fire_resistance",
+      "label": "Зелье огнестойкости",
+      "item": "minecraft:potion",
+      "potion": "fire_resistance",
+      "max_count": 1,
+      "functions": [{ "function": "set_potion", "id": "fire_resistance" }]
+    },
+    {
+      "key": "potion_nightvision",
+      "label": "Зелье ночного зрения",
+      "item": "minecraft:potion",
+      "potion": "nightvision",
+      "max_count": 1,
+      "functions": [{ "function": "set_potion", "id": "nightvision" }]
+    },
+    {
+      "key": "potion_regeneration",
+      "label": "Зелье регенерации II",
+      "item": "minecraft:potion",
+      "potion": "strong_regeneration",
+      "max_count": 1,
+      "functions": [{ "function": "set_potion", "id": "strong_regeneration" }]
+    },
+    {
+      "key": "book_mending",
+      "label": "Зачарованная книга: Починка I",
+      "item": "minecraft:enchanted_book",
+      "enchantment": "mending",
+      "level": 1,
+      "max_count": 1,
+      "functions": [
+        { "function": "specific_enchants", "enchants": [{ "id": "mending", "level": 1 }] }
+      ]
+    },
+    {
+      "key": "book_unbreaking",
+      "label": "Зачарованная книга: Прочность III",
+      "item": "minecraft:enchanted_book",
+      "enchantment": "unbreaking",
+      "level": 3,
+      "max_count": 1,
+      "functions": [
+        { "function": "specific_enchants", "enchants": [{ "id": "unbreaking", "level": 3 }] }
+      ]
+    },
+    {
+      "key": "book_efficiency",
+      "label": "Зачарованная книга: Эффективность V",
+      "item": "minecraft:enchanted_book",
+      "enchantment": "efficiency",
+      "level": 5,
+      "max_count": 1,
+      "functions": [
+        { "function": "specific_enchants", "enchants": [{ "id": "efficiency", "level": 5 }] }
+      ]
+    },
+    {
+      "key": "book_fortune",
+      "label": "Зачарованная книга: Удача III",
+      "item": "minecraft:enchanted_book",
+      "enchantment": "fortune",
+      "level": 3,
+      "max_count": 1,
+      "functions": [
+        { "function": "specific_enchants", "enchants": [{ "id": "fortune", "level": 3 }] }
+      ]
+    },
+    {
+      "key": "book_silk_touch",
+      "label": "Зачарованная книга: Шёлковое касание I",
+      "item": "minecraft:enchanted_book",
+      "enchantment": "silk_touch",
+      "level": 1,
+      "max_count": 1,
+      "functions": [
+        { "function": "specific_enchants", "enchants": [{ "id": "silk_touch", "level": 1 }] }
+      ]
+    }
+  ],
+  "defaults": {
+    "refresh_seconds": 600,
+    "max_uses": 3,
+    "requests": [
+      { "id": "wheat", "item": "minecraft:wheat", "min": 24, "max": 40 },
+      { "id": "iron", "item": "minecraft:iron_ingot", "min": 8, "max": 12 },
+      { "id": "redstone", "item": "minecraft:redstone", "min": 16, "max": 32 }
+    ],
+    "rewards": [
+      { "id": "diamonds", "choice": "diamond", "count": 1 },
+      { "id": "amethyst", "choice": "amethyst_shard", "count": 4 },
+      { "id": "stone", "choice": "crying_obsidian", "count": 2 },
+      { "id": "healing", "choice": "potion_healing", "count": 1 },
+      { "id": "mending", "choice": "book_mending", "count": 1 }
+    ]
+  }
+}

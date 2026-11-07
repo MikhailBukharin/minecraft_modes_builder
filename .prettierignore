@@ -1,0 +1,5 @@
+app/web/vendor/
+node_modules/
+**/node_modules/
+app/test-tmp/
+tmp/

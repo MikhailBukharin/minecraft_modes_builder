@@ -1,0 +1,377 @@
+:root {
+  font-family:
+    Segoe UI,
+    system-ui,
+    sans-serif;
+  color: #18392f;
+  background: #f4f5ed;
+  font-size: 15px;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 4%;
+  background: #fff;
+  border-bottom: 1px solid #dce4d8;
+  gap: 16px;
+}
+.brand {
+  font-weight: 750;
+  font-size: 20px;
+  text-decoration: none;
+  color: #18392f;
+}
+.brand small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-left: 25px;
+  color: #789075;
+}
+header > div {
+  display: flex;
+  gap: 8px;
+}
+button,
+select,
+input,
+textarea {
+  font: inherit;
+}
+button {
+  border: 1px solid #cbd8c9;
+  border-radius: 9px;
+  padding: 10px 15px;
+  background: white;
+  color: #244737;
+  cursor: pointer;
+}
+button:hover {
+  background: #e8f0df;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #e3a541;
+  outline-offset: 2px;
+}
+.primary {
+  background: #295b3e;
+  color: #fff;
+  border-color: #295b3e;
+}
+.primary:hover {
+  background: #1c472e;
+}
+main {
+  max-width: 1320px;
+  margin: auto;
+  padding: 28px 30px;
+}
+.intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.eyebrow {
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 1.6px;
+  color: #748269;
+}
+h1 {
+  font-size: 36px;
+  letter-spacing: -1.5px;
+  margin: 9px 0;
+}
+h2 {
+  font-size: 23px;
+  margin: 9px 0 23px;
+}
+p {
+  line-height: 1.6;
+}
+.intro p {
+  color: #697c6a;
+  margin-top: 4px;
+}
+.local {
+  font-size: 12px;
+  color: #648161;
+  background: #e7eddf;
+  padding: 10px;
+  border-radius: 20px;
+}
+nav {
+  display: flex;
+  gap: 12px;
+  margin: 22px 0;
+}
+nav button {
+  flex: 1;
+  background: transparent;
+  text-align: left;
+  border-color: #d6dfd0;
+  padding: 14px;
+}
+nav button.active {
+  background: #dce9ca;
+  border-color: #829d6e;
+  font-weight: 700;
+}
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(350px, 1fr) minmax(360px, 1.1fr);
+  gap: 24px;
+  align-items: start;
+}
+.editor,
+.preview {
+  background: #fff;
+  border: 1px solid #dfe5d7;
+  border-radius: 18px;
+  padding: 28px;
+}
+.editor label {
+  display: block;
+  font-size: 12px;
+  font-weight: 650;
+  margin: 16px 0 8px;
+}
+input:not([type="checkbox"]):not([type="range"]),
+textarea,
+select {
+  display: block;
+  width: 100%;
+  border: 1px solid #d0dccc;
+  border-radius: 8px;
+  padding: 11px;
+  margin-top: 6px;
+  background: #fafcf7;
+  color: #1f3e2d;
+}
+input[type="color"] {
+  height: 49px;
+  padding: 5px !important;
+}
+input[type="range"] {
+  width: 100%;
+  accent-color: #295b3e;
+}
+input:focus,
+textarea:focus {
+  outline: 2px solid #9db687;
+}
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.hint {
+  font-size: 12px;
+  color: #6c7e6b;
+  line-height: 1.6;
+}
+.upload {
+  border: 1px dashed #91ab7f;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  background: #f4f8ee;
+}
+.upload input {
+  width: 100%;
+  margin-top: 8px;
+  font-size: 11px;
+}
+#drawingPreview {
+  max-width: 100%;
+  max-height: 230px;
+  border-radius: 8px;
+}
+.check {
+  display: flex !important;
+  gap: 10px;
+  align-items: center;
+}
+.editor-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #e6ecdf;
+  padding-top: 20px;
+  margin-top: 25px;
+}
+.preview {
+  position: sticky;
+  top: 20px;
+}
+.preview-head {
+  display: flex;
+  justify-content: space-between;
+}
+.preview-head h2 {
+  margin-bottom: 10px;
+}
+.pill {
+  height: 30px;
+  background: #edf2e5;
+  border-radius: 6px;
+  padding: 6px 9px;
+  font-size: 12px;
+}
+#scene {
+  height: 380px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: radial-gradient(#f7f7dd, #dce8ce);
+  touch-action: none;
+}
+#scene canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.preview-tools {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 15px 0;
+}
+.preview-tools button {
+  font-size: 12px;
+  padding: 9px;
+}
+#stats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+#stats span {
+  background: #f0f4e9;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+details {
+  border-top: 1px solid #e0e6d9;
+  padding-top: 16px;
+  margin-top: 25px;
+}
+summary {
+  cursor: pointer;
+  font-weight: 650;
+  font-size: 13px;
+}
+.download {
+  display: block;
+  background: #dce9ca;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 10px;
+  color: #244737;
+  font-weight: 700;
+}
+ol {
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+code {
+  display: block;
+  background: #18392f;
+  color: #eff5de;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+  margin-bottom: 12px;
+}
+#status {
+  padding: 12px 16px;
+  background: #e8eedf;
+  border-radius: 9px;
+}
+#status.error {
+  background: #fae6dc;
+  color: #922d20;
+}
+footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 11px;
+  color: #7b8976;
+}
+[hidden] {
+  display: none !important;
+}
+@media (max-width: 850px) {
+  header,
+  .intro {
+    display: block;
+  }
+  header > div {
+    margin-top: 15px;
+  }
+  .local {
+    display: inline-block;
+  }
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+  .preview {
+    position: static;
+    grid-row: 1;
+  }
+  #scene {
+    height: 280px;
+  }
+  main {
+    padding: 20px 15px;
+  }
+  h1 {
+    font-size: 29px;
+  }
+  nav {
+    gap: 5px;
+  }
+  nav button {
+    font-size: 11px;
+    padding: 10px 6px;
+  }
+}
+.preview-scale {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: #f1f5ea;
+  border-radius: 9px;
+  font-size: 12px;
+}
+.preview-scale .check {
+  margin: 0;
+  cursor: pointer;
+}
+.preview-scale input {
+  accent-color: #295b3e;
+}
+.preview-scale span {
+  font-size: 11px;
+  color: #6c7e6b;
+}
+.preview-tools {
+  flex-wrap: wrap;
+}
